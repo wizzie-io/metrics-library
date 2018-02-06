@@ -76,4 +76,57 @@ public class MetricListenerUnitTest {
 
         assertEquals(expectedList, mockMetricListener.content);
     }
+
+    @Test
+    public void testDataBagConfig(){
+        Map<String, Object> databag = new HashMap<>();
+        databag.put("test1", "1");
+        databag.put("test2", 2);
+
+        Map<String, Object> newConfig = new HashMap<>(config);
+        newConfig.put(METRIC_DATABAG, databag);
+
+        MetricsManager metricsManager = new MetricsManager(newConfig);
+
+        assertEquals(1, metricsManager.listeners.size());
+
+        MetricListener metricListener = metricsManager.listeners.get(0);
+
+        assertTrue(metricListener instanceof MockMetricListener);
+
+        MockMetricListener mockMetricListener = (MockMetricListener) metricListener;
+
+        List<Map<String, Object>> expectedList = new ArrayList<>();
+
+        Counter counter = new Counter();
+        counter.inc(5);
+        mockMetricListener.updateMetric("counter-test", counter.getCount());
+
+        Map<String, Object> expectedResponse = new HashMap<>();
+        expectedResponse.put("monitor", "counter-test");
+        expectedResponse.put("value", counter.getCount());
+        expectedResponse.put("timestamp",  System.currentTimeMillis() / 1000L);
+        expectedResponse.put("test1", "1");
+        expectedResponse.put("test2", 2);
+
+        expectedList.add(expectedResponse);
+
+        Meter meter = new Meter();
+        meter.mark();
+        meter.mark();
+        meter.mark();
+
+        mockMetricListener.updateMetric("meter-test", meter.getCount());
+
+        expectedResponse = new HashMap<>();
+        expectedResponse.put("monitor", "meter-test");
+        expectedResponse.put("value", meter.getCount());
+        expectedResponse.put("timestamp",  System.currentTimeMillis() / 1000L);
+        expectedResponse.put("test1", "1");
+        expectedResponse.put("test2", 2);
+
+        expectedList.add(expectedResponse);
+
+        assertEquals(expectedList, mockMetricListener.content);
+    }
 }

@@ -8,12 +8,16 @@ import org.slf4j.LoggerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
+import static io.wizzie.metrics.MetricsConstant.METRIC_DATABAG;
+
 public class ConsoleMetricListener implements MetricListener {
     private static final Logger log = LoggerFactory.getLogger(ConsoleMetricListener.class);
     ObjectMapper mapper;
+    Map<String, Object> metricDataBag;
 
     @Override
     public void init(Map<String, Object> config) {
+        metricDataBag = (Map<String, Object>) config.get(METRIC_DATABAG);
         mapper = new ObjectMapper();
     }
 
@@ -23,6 +27,8 @@ public class ConsoleMetricListener implements MetricListener {
         metric.put("timestamp", System.currentTimeMillis() / 1000L);
         metric.put("monitor", metricName);
         metric.put("value", metricValue);
+
+        if(metricDataBag != null) metric.putAll(metricDataBag);
 
         try {
             if (metricValue != null)
