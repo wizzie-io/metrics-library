@@ -10,7 +10,7 @@ This library allow you to register custom and JVM metrics on java applications. 
 | `metric.verbose.mode`    | Enable verbose metrics (1min, 5min, 15min ...)                    | `false`        | boolean |
 | `metric.listeners`       | The listeners that metric library should be use to export metrics | `["io.wizzie.metrics.listeners.ConsoleMetricListener"]`               | List |
 | `metric.interval`        | The interval to configure when the metric are sent (milliseconds) | `60000`        | Long |
-| `application.id`         | Identifier to specific what application is exporting the metrics  |                | String |
+| `application.id`         | Identifier to specific what application is exporting the metrics  | Depends of the listener                | String |
 | `metric.databag`         | Static data to add to all exported metrics.                       |                | Map[String, Object] |
 
 ## Listeners
@@ -28,6 +28,7 @@ This library allow you to register custom and JVM metrics on java applications. 
 | :-------------           | :-------------                                    | :------------- | :----  |
 | `metric.kafka.topic`     | Topic to send metrics                             | `__metrics` | String |
 | `bootstrap.servers`      | Kafka brokers (ip111:9092,ip222:9092)             |                | String |
+| `application.id`         | Identifier to specific what application is exporting the metrics | Thread.currentThread().getName()| String |
 
 ## Work with library
 
