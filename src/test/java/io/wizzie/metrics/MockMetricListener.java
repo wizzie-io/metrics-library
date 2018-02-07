@@ -7,12 +7,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static io.wizzie.metrics.MetricsConstant.METRIC_DATABAG;
+
 public class MockMetricListener implements MetricListener {
 
     List<Map<String, Object>> content = new ArrayList<>();
+    Map<String, Object> metricDataBag;
 
     @Override
     public void init(Map<String, Object> config) {
+        metricDataBag = (Map<String, Object>) config.get(METRIC_DATABAG);
     }
 
     @Override
@@ -21,6 +25,8 @@ public class MockMetricListener implements MetricListener {
         metric.put("timestamp", System.currentTimeMillis() / 1000L);
         metric.put("monitor", metricName);
         metric.put("value", metricValue);
+
+        if(metricDataBag != null) metric.putAll(metricDataBag);
 
         if (metricValue != null)
             content.add(metric);
