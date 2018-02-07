@@ -26,7 +26,7 @@ This library allow you to register custom and JVM metrics on java applications. 
 
 | Listener class           | Description                                       | Default        | Type   |
 | :-------------           | :-------------                                    | :------------- | :----  |
-| `metric.kafka.topic`     | Topic to send metrics                             |                | String |
+| `metric.kafka.topic`     | Topic to send metrics                             | `__metrics` | String |
 | `bootstrap.servers`      | Kafka brokers (ip111:9092,ip222:9092)             |                | String |
 
 ## Work with library
