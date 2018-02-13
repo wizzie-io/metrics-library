@@ -70,9 +70,20 @@ Later you can init the `MetricsManager` class and register your metrics:
   config.put(METRIC_LISTENERS, Collections.singletonList("io.wizzie.metrics.listeners.ConsoleMetricListener"));
 
   MetricsManager metricsManager = new MetricsManager(config);
-
-  metricsManager.registerMetric("myCounterMetric", new Counter());
-  metricsManager.registerMetric("myTimerMetric", new Timer());
+  
+  Counter myCounter = new Counter();
+  Timer myTimer = new Timer();
+  
+  metricsManager.registerMetric("myCounterMetric", myCounter);
+  metricsManager.registerMetric("myTimerMetric", myTimer);
   
   metricsManager.start();
+  
+  // Now you can use the metric instances.
+
+  myCounter.inc();
+  myCounter.dec();
+  myCounter.inc(10);
+  
+  myTimer.update(1, TimeUnit.SECONDS);
 ```
