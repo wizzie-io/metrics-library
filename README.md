@@ -34,7 +34,7 @@ This library allow you to register custom and JVM metrics on java applications. 
 
 To work with this library you need to add this maven repository, extension and dependency to your pom.xml:
 
-```
+```xml
 <repository>
     <id>wizzie-release</id>
     <name>Wizzie Release Repository</name>
@@ -42,7 +42,7 @@ To work with this library you need to add this maven repository, extension and d
 </repository>
 ```
 
-```
+```xml
 <extension>
     <groupId>org.springframework.build</groupId>
     <artifactId>aws-maven</artifactId>
@@ -50,8 +50,8 @@ To work with this library you need to add this maven repository, extension and d
 </extension>
 ```
 
-```
-<dependency
+```xml
+<dependency>
     <groupId>io.wizzie.metrics</groupId>
     <artifactId>metrics-library</artifactId>
     <version>0.0.2-SNAPSHOT</version>
@@ -73,4 +73,6 @@ Later you can init the `MetricsManager` class and register your metrics:
 
   metricsManager.registerMetric("myCounterMetric", new Counter());
   metricsManager.registerMetric("myTimerMetric", new Timer());
+  
+  metricsManager.start();
 ```
