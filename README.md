@@ -1,6 +1,6 @@
 # metrics-library
 
-This library allow you to register custom and JVM metrics on java applications. It uses listeners to send this metrics to different backends, by default the metrics-library register the common [JVM metrics](https://github.com/wizzie-io/metrics-library/blob/master/src/main/java/io/wizzie/metrics/MetricsManager.java#L81) (heap, gc count, gc time ...).
+This library allows you to register custom and JVM metrics on java applications. It uses listeners to send this metrics to different backends, by default the metrics-library register the common [JVM metrics](https://github.com/wizzie-io/metrics-library/blob/master/src/main/java/io/wizzie/metrics/MetricsManager.java#L81) (heap, gc count, gc time ...).
 
 ## Properties
 
@@ -14,7 +14,7 @@ This library allow you to register custom and JVM metrics on java applications. 
 | `metric.databag`         | Static data to add to all exported metrics.                       |                | Map[String, Object] |
 
 ## Listeners
-
+The listeners are the process that listen the reported metrics and do something with them. You can have multiple listeners at the same time.
 | Listener class                                       | Description                         |
 | :-------------                                       | :-------------                      |
 | `io.wizzie.metrics.listeners.ConsoleMetricListener`  | Log the metrics ussing log4j-slf4j  |
@@ -87,3 +87,7 @@ Later you can init the `MetricsManager` class and register your metrics:
   
   myTimer.update(1, TimeUnit.SECONDS);
 ```
+
+### Custom Listeners
+You can made new listeners to do this you need to implement the [MetricListener Class](https://github.com/wizzie-io/metrics-library/blob/master/src/main/java/io/wizzie/metrics/listeners/MetricListener.java). On this class you receive the metric on the method `void updateMetric(String metricName, Object metricValue);`
+
