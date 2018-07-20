@@ -15,6 +15,7 @@ This library allows you to register custom and JVM metrics on java applications.
 
 ## Listeners
 The listeners are the process that listen the reported metrics and do something with them. You can have multiple listeners at the same time.
+
 | Listener class                                       | Description                         |
 | :-------------                                       | :-------------                      |
 | `io.wizzie.metrics.listeners.ConsoleMetricListener`  | Log the metrics ussing log4j-slf4j  |
