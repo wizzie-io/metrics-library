@@ -1,5 +1,6 @@
 [![CircleCI](https://circleci.com/gh/wizzie-io/metrics-library/tree/master.svg?style=svg)](https://circleci.com/gh/wizzie-io/metrics-library/tree/master)
-[![GitHub release](https://img.shields.io/github/release/wizzie-io/metrics-library.svg)](https://github.com/wizzie-io/metrics-library/releases/latest) 
+[![GitHub release](https://img.shields.io/github/release/wizzie-io/metrics-library.svg)](https://github.com/wizzie-io/metrics-library/releases/latest)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.wizzie.metrics/metrics-library/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.wizzie.metrics/metrics-library)
 [![wizzie-io](https://img.shields.io/badge/powered%20by-wizzie.io-F68D2E.svg)](https://github.com/wizzie-io/)
 
 # metrics-library
