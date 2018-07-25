@@ -1,3 +1,7 @@
+[![CircleCI](https://circleci.com/gh/wizzie-io/metrics-library/tree/master.svg?style=svg)](https://circleci.com/gh/wizzie-io/metrics-library/tree/master)
+[![GitHub release](https://img.shields.io/github/release/wizzie-io/metrics-library.svg)](https://github.com/wizzie-io/metrics-library/releases/latest) 
+[![wizzie-io](https://img.shields.io/badge/powered%20by-wizzie.io-F68D2E.svg)](https://github.com/wizzie-io/)
+
 # metrics-library
 
 This library allows you to register custom and JVM metrics on java applications. It uses listeners to send this metrics to different backends, by default the metrics-library register the common [JVM metrics](https://github.com/wizzie-io/metrics-library/blob/master/src/main/java/io/wizzie/metrics/MetricsManager.java#L81) (heap, gc count, gc time ...).
