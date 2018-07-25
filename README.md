@@ -38,29 +38,14 @@ The listeners are the process that listen the reported metrics and do something 
 
 ## Work with library
 
-To work with this library you need to add this maven repository, extension and dependency to your pom.xml:
+To work with this library you need to add this dependency to your pom.xml:
 
-```xml
-<repository>
-    <id>wizzie-release</id>
-    <name>Wizzie Release Repository</name>
-    <url>s3://wizzie-mvn-repo/release</url>
-</repository>
-```
-
-```xml
-<extension>
-    <groupId>org.springframework.build</groupId>
-    <artifactId>aws-maven</artifactId>
-    <version>5.0.0.RELEASE</version>
-</extension>
-```
 
 ```xml
 <dependency>
     <groupId>io.wizzie.metrics</groupId>
     <artifactId>metrics-library</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.4</version>
 </dependency>
 ```
 
