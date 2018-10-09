@@ -2,10 +2,7 @@ package io.wizzie.metrics;
 
 import com.codahale.metrics.*;
 import com.codahale.metrics.Timer;
-import com.codahale.metrics.jvm.BufferPoolMetricSet;
-import com.codahale.metrics.jvm.GarbageCollectorMetricSet;
-import com.codahale.metrics.jvm.MemoryUsageGaugeSet;
-import com.codahale.metrics.jvm.ThreadStatesGaugeSet;
+import com.codahale.metrics.jvm.*;
 
 import io.wizzie.metrics.listeners.MetricListener;
 import org.slf4j.Logger;
@@ -13,6 +10,7 @@ import org.slf4j.LoggerFactory;
 
 import java.lang.management.ManagementFactory;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collectors;
 
@@ -82,7 +80,7 @@ public class MetricsManager extends Thread {
         registerAll("gc", new GarbageCollectorMetricSet());
         registerAll("buffers", new BufferPoolMetricSet(ManagementFactory.getPlatformMBeanServer()));
         registerAll("memory", new MemoryUsageGaugeSet());
-        registerAll("threads", new ThreadStatesGaugeSet());
+        registerAll("threads", new CachedThreadStatesGaugeSet(10, TimeUnit.SECONDS));
     }
 
     private void registerAll(String prefix, MetricSet metricSet) {
