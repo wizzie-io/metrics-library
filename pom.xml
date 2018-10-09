@@ -4,7 +4,7 @@
 
     <groupId>io.wizzie.metrics</groupId>
     <artifactId>metrics-library</artifactId>
-    <version>0.0.5-SNAPSHOT</version>
+    <version>0.0.5</version>
 
     <packaging>jar</packaging>
 
@@ -45,7 +45,7 @@
     <scm>
         <developerConnection>scm:git:git@github.com:wizzie-io/metrics-library.git</developerConnection>
         <connection>scm:git:git@github.com:wizzie-io/metrics-library.git</connection>
-        <tag>HEAD</tag>
+        <tag>metrics-library-0.0.5</tag>
         <url>https://github.com/wizzie-io/metrics-library.git</url>
     </scm>
 
